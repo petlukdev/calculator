@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-gap: 7px;
+    width: 500px;
+    height: 600px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.box {
+    font-size: 40px;
+    text-align: right;
+    border: none;
+    border-radius: 20px;
+    cursor: text;
+}
+
+.btn-container {
+    display: grid;
+    grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+    grid-gap: 7px;
+}
+
+.btn-container button {
+    font-size: 26px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-container button:nth-child(-n + 2) {
+    grid-column: span 2 / span 2;
+}
