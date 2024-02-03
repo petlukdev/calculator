@@ -30,6 +30,10 @@ body {
     cursor: text;
 }
 
+.box:focus {
+    outline-width: 0;
+}
+
 .btn-container {
     display: grid;
     grid-template: repeat(6, 1fr) / repeat(4, 1fr);
@@ -38,9 +42,18 @@ body {
 
 .btn-container button {
     font-size: 26px;
+    background: gainsboro;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.btn-container button:hover {
+    background: lightblue;
+}
+
+.btn-container button:active {
+    opacity: 0.9;
 }
 
 .btn-container button:nth-child(-n + 2) {
