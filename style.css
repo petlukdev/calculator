@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -23,8 +24,9 @@ body {
 }
 
 .box {
-    font-size: 40px;
+    font-size: 45px;
     text-align: right;
+    background: white;
     border: none;
     border-radius: 20px;
     cursor: text;
@@ -32,6 +34,10 @@ body {
 
 .box:focus {
     outline-width: 0;
+}
+
+#result {
+    padding: 20px 5px;
 }
 
 .btn-container {
