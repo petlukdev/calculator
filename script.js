@@ -2,7 +2,7 @@ const result = document.querySelector(".box")
 const clr = document.getElementById("clr")
 const del = document.getElementById("del")
 const nums = document.querySelectorAll(".num")
-const modifiers = document.querySelectorAll(".modify")
+const modifiers = document.querySelectorAll(".action")
 
 clr.addEventListener("click", () => {
     if (result.value == "") return
