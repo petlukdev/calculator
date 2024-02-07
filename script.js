@@ -2,6 +2,7 @@ const result = document.getElementById("result")
 const clr = document.getElementById("clr")
 const del = document.getElementById("del")
 const pow = document.getElementById("pow")
+const sqrt = document.getElementById("sqrt")
 const nums = document.querySelectorAll(".num")
 const modifiers = document.querySelectorAll(".action")
 
@@ -24,10 +25,23 @@ del.addEventListener("click", () => {
 pow.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "ERROR") return
 
-    subtotal = Math.pow(parseFloat(result.innerText), 2)
-    console.log(String(subtotal).length)
+    subtotal = +(parseFloat(result.innerText) ** 2).toFixed(10)
 
-    if (String(subtotal).length > 15) {
+    if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
+        result.innerText = "ERROR"
+        return
+    }
+
+    result.innerText = subtotal
+})
+
+sqrt.addEventListener("click", () => {
+    if (result.innerText == "" || result.innerText == "ERROR") return
+
+    subtotal = +Math.sqrt(parseFloat(result.innerText)).toFixed(10)
+    console.log(subtotal)
+
+    if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
         result.innerText = "ERROR"
         return
     }
