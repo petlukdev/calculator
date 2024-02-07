@@ -3,6 +3,7 @@ const clr = document.getElementById("clr")
 const del = document.getElementById("del")
 const pow = document.getElementById("pow")
 const sqrt = document.getElementById("sqrt")
+const inverse = document.getElementById("inverse")
 const nums = document.querySelectorAll(".num")
 const modifiers = document.querySelectorAll(".action")
 
@@ -35,11 +36,27 @@ pow.addEventListener("click", () => {
     result.innerText = subtotal
 })
 
+inverse.addEventListener("click", () => {
+    if (result.innerText == "" || result.innerText == "ERROR") return
+    if (result.innerText == "0") {
+        result.innerText = "ERROR"
+        return
+    }
+
+    subtotal = +(1 / parseFloat(result.innerText)).toFixed(10)
+
+    if (String(subtotal).length > 15) {
+        result.innerText = "ERROR"
+        return
+    }
+
+    result.innerText = subtotal
+})
+
 sqrt.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "ERROR") return
 
     subtotal = +Math.sqrt(parseFloat(result.innerText)).toFixed(10)
-    console.log(subtotal)
 
     if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
         result.innerText = "ERROR"
