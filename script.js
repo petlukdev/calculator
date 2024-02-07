@@ -12,6 +12,11 @@ clr.addEventListener("click", () => {
     decimal = false
 })
 
+del.addEventListener("click", () => {
+    if (result.innerText == "") return
+    result.innerText = result.innerText.slice(0, -1)
+})
+
 nums.forEach((i) =>
     i.addEventListener("click", () => {
         if (result.innerText.length + 1 > 15) return
