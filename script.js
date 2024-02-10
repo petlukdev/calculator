@@ -65,7 +65,13 @@ sqrt.addEventListener("click", () => {
         return
     }
 
-    subtotal = +Math.sqrt(parseFloat(result.innerText)).toFixed(10)
+    subtotal = parseFloat(result.innerText)
+    if (Math.sign(subtotal) == -1){
+        result.innerText = "ERROR"
+        return
+    }
+    
+    subtotal = +Math.sqrt(subtotal).toFixed(10)
 
     if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
         result.innerText = "ERROR"
