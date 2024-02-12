@@ -5,6 +5,7 @@ const pow = document.getElementById("pow")
 const sqrt = document.getElementById("sqrt")
 const inverse = document.getElementById("inverse")
 const change = document.getElementById("switch")
+const solve = document.getElementById("solve")
 const nums = document.querySelectorAll(".num")
 const modifiers = document.querySelectorAll(".action")
 
@@ -105,13 +106,13 @@ change.addEventListener("click", () => {
 
 nums.forEach((i) =>
     i.addEventListener("click", () => {
-        if (result.innerText.length + 1 > 15) return
-        if (result.innerText == "ERROR") return
-
         if (nextNumber) {
             result.innerText = ""
             nextNumber = false
         }
+
+        if (result.innerText.length + 1 > 15) return
+        if (result.innerText == "ERROR") return
 
         if (i.textContent == "0" && result.innerText == "0") return
         if (i.textContent == "." && decimal) return
@@ -128,8 +129,34 @@ nums.forEach((i) =>
 
 modifiers.forEach((i) => 
     i.addEventListener("click", () => {
-        inputString += result.innerText + i.dataset.action
+        if (result.innerText == ".") {
+            inputString += result.innerText + 0 + i.dataset.action
+        }
+        else {
+            inputString += result.innerText + i.dataset.action
+        }
+
         nextNumber = true
     })
 )
 
+solve.addEventListener("click", () => {
+    if (result.innerText == "ERROR") return
+    
+    if (result.innerText == ".") {
+        inputString += result.innerText + 0
+    }
+    else {
+        inputString += result.innerText
+    }
+    subtotal = eval(inputString)
+
+    if (subtotal.toString().length + 1 > 15) {
+        result.innerText = "ERROR"
+        return
+    }
+
+    result.innerText = subtotal
+
+    inputString = ""
+})
