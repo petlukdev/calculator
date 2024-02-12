@@ -9,12 +9,16 @@ const nums = document.querySelectorAll(".num")
 const modifiers = document.querySelectorAll(".action")
 
 let decimal = false
+let nextNumber = false
 let subtotal = 0
+let inputString = ""
 
 clr.addEventListener("click", () => {
     if (result.innerText == "") return
 
     result.innerText = ""
+    inputString = ""
+    nextNumber = false
     decimal = false
 })
 
@@ -103,6 +107,12 @@ nums.forEach((i) =>
     i.addEventListener("click", () => {
         if (result.innerText.length + 1 > 15) return
         if (result.innerText == "ERROR") return
+
+        if (nextNumber) {
+            result.innerText = ""
+            nextNumber = false
+        }
+
         if (i.textContent == "0" && result.innerText == "0") return
         if (i.textContent == "." && decimal) return
         if (i.textContent == ".") decimal = true
@@ -115,3 +125,11 @@ nums.forEach((i) =>
         result.innerText += i.textContent
     })
 )
+
+modifiers.forEach((i) => 
+    i.addEventListener("click", () => {
+        inputString += result.innerText + i.dataset.action
+        nextNumber = true
+    })
+)
+
