@@ -18,14 +18,25 @@ let subtotal = 0
 let inputString = ""
 let digitLimit = 15
 
-media1.addEventListener("change", () => {
+function checkMedia1() {
     if (media1.matches) digitLimit = 11
     else digitLimit = 15
+}
+
+function checkMedia2() {
+    if (media2.matches) digitLimit = 7
+    else digitLimit = 11
+}
+
+checkMedia1()
+checkMedia2()
+
+media1.addEventListener("change", () => {
+    checkMedia1()
 })
 
 media2.addEventListener("change", () => {
-    if (media2.matches) digitLimit = 7
-    else digitLimit = 11
+    checkMedia2()
 })
 
 clr.addEventListener("click", () => {
