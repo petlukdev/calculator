@@ -9,10 +9,24 @@ const solve = document.getElementById("solve")
 const nums = document.querySelectorAll(".num")
 const modifiers = document.querySelectorAll(".action")
 
+const media1 = window.matchMedia("(max-width: 420px)")
+const media2 = window.matchMedia("(max-width: 300px)")
+
 let decimal = false
 let nextNumber = false
 let subtotal = 0
 let inputString = ""
+let digitLimit = 15
+
+media1.addEventListener("change", () => {
+    if (media1.matches) digitLimit = 11
+    else digitLimit = 15
+})
+
+media2.addEventListener("change", () => {
+    if (media2.matches) digitLimit = 7
+    else digitLimit = 11
+})
 
 clr.addEventListener("click", () => {
     if (result.innerText == "") return
@@ -38,7 +52,8 @@ pow.addEventListener("click", () => {
 
     subtotal = +(parseFloat(result.innerText) ** 2).toFixed(10)
 
-    if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
+    if (String(subtotal).length > digitLimit && !Number.isInteger(subtotal) 
+        || String(subtotal).length > digitLimit) {
         result.innerText = "ERROR"
         return
     }
@@ -55,7 +70,7 @@ inverse.addEventListener("click", () => {
 
     subtotal = +(1 / parseFloat(result.innerText)).toFixed(10)
 
-    if (String(subtotal).length > 15) {
+    if (String(subtotal).length > digitLimit) {
         result.innerText = "ERROR"
         return
     }
@@ -78,7 +93,8 @@ sqrt.addEventListener("click", () => {
     
     subtotal = +Math.sqrt(subtotal).toFixed(10)
 
-    if (String(subtotal).length > 15 && !Number.isInteger(subtotal) || String(subtotal).length > 15) {
+    if (String(subtotal).length > digitLimit && !Number.isInteger(subtotal) 
+        || String(subtotal).length > digitLimit) {
         result.innerText = "ERROR"
         return
     }
@@ -111,7 +127,7 @@ nums.forEach((i) =>
             nextNumber = false
         }
 
-        if (result.innerText.length + 1 > 15) return
+        if (result.innerText.length + 1 > digitLimit) return
         if (result.innerText == "ERROR") return
 
         if (i.textContent == "0" && result.innerText == "0") return
@@ -157,7 +173,7 @@ solve.addEventListener("click", () => {
     }
     subtotal = eval(inputString)
 
-    if (subtotal.toString().length + 1 > 15) {
+    if (subtotal.toString().length + 1 > digitLimit) {
         result.innerText = "ERROR"
         return
     }
