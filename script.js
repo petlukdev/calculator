@@ -31,7 +31,7 @@ del.addEventListener("click", () => {
 
 pow.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "ERROR") return
-    if (result.innerText == ".") {
+    if (result.innerText == "." || result.innerText == "-") {
         result.innerText = "ERROR"
         return
     }
@@ -48,7 +48,7 @@ pow.addEventListener("click", () => {
 
 inverse.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "ERROR") return
-    if (result.innerText == "0" || result.innerText == ".") {
+    if (result.innerText == "0" || result.innerText == "." || result.innerText == "-") {
         result.innerText = "ERROR"
         return
     }
@@ -65,7 +65,7 @@ inverse.addEventListener("click", () => {
 
 sqrt.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "ERROR") return
-    if (result.innerText == ".") {
+    if (result.innerText == "." || result.innerText == "-") {
         result.innerText = "ERROR"
         return
     }
@@ -88,7 +88,7 @@ sqrt.addEventListener("click", () => {
 
 change.addEventListener("click", () => {
     if (result.innerText == "" || result.innerText == "0" || result.innerText == "ERROR") return
-    if (result.innerText == ".") {
+    if (result.innerText == "." || result.innerText == "-") {
         result.innerText = "ERROR"
         return
     }
@@ -132,6 +132,9 @@ modifiers.forEach((i) =>
         if (result.innerText == ".") {
             inputString += result.innerText + 0 + i.dataset.action
         }
+        else if (result.innerText == "-") {
+            inputString += result.innerText + 1 + i.dataset.action
+        }
         else {
             inputString += result.innerText + i.dataset.action
         }
@@ -145,6 +148,9 @@ solve.addEventListener("click", () => {
     
     if (result.innerText == ".") {
         inputString += result.innerText + 0
+    }
+    else if (result.innerText == "-") {
+        inputString += result.innerText + 1
     }
     else {
         inputString += result.innerText
